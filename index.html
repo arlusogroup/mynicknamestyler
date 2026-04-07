@@ -3,456 +3,221 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <title>Nickname Styler — Splash Screen</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <title>Nickname Styler — Splash</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Syne:wght@700;800&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --white: #ffffff;
+      --black: #0a0a0a;
+      --accent: #2563eb;
+      --accent-2: #7c3aed;
+      --mid: #f4f4f5;
+      --muted: #a1a1aa;
+      --radius: 28px;
     }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: radial-gradient(ellipse at 30% 40%, #f5f9ff, #eef2fa);
-      min-height: 100vh;
+    html, body {
+      height: 100%;
+      width: 100%;
+      background: var(--white);
+      font-family: 'DM Sans', sans-serif;
       display: flex;
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      position: relative;
     }
 
-    /* animated abstract shapes */
-    .blob {
-      position: absolute;
-      filter: blur(70px);
-      border-radius: 50%;
-      opacity: 0.4;
-      z-index: 0;
+    /* subtle noise texture overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
       pointer-events: none;
-      animation: floatBlob 14s infinite alternate ease-in-out;
+      z-index: 0;
     }
 
-    .blob-1 {
-      width: 350px;
-      height: 350px;
-      background: #1a56db20;
-      top: -120px;
-      left: -100px;
-    }
-    .blob-2 {
-      width: 500px;
-      height: 500px;
-      background: #3b82f610;
-      bottom: -180px;
-      right: -120px;
-      animation-duration: 18s;
-    }
-    .blob-3 {
-      width: 280px;
-      height: 280px;
-      background: #8b5cf620;
-      top: 45%;
-      left: 75%;
-      animation-duration: 12s;
-    }
-    .blob-4 {
-      width: 220px;
-      height: 220px;
-      background: #10b98115;
-      bottom: 15%;
-      left: 5%;
-      animation-duration: 16s;
-    }
-
-    @keyframes floatBlob {
-      0% { transform: translate(0, 0) scale(1); }
-      100% { transform: translate(40px, -30px) scale(1.08); }
-    }
-
-    /* main splash card */
-    .splash-wrapper {
+    /* ---- Layout ---- */
+    .scene {
       position: relative;
-      z-index: 20;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      opacity: 0;
+      animation: fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ---- LOGO ---- */
+    .logo-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo-mark {
+      width: 96px;
+      height: 96px;
+      position: relative;
+    }
+
+    /* SVG logo paths animated in */
+    .logo-mark svg {
       width: 100%;
-      max-width: 560px;
-      margin: 24px;
-      animation: cardRise 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
+      height: 100%;
+      overflow: visible;
     }
 
-    @keyframes cardRise {
-      0% { opacity: 0; transform: translateY(20px) scale(0.96); }
-      100% { opacity: 1; transform: translateY(0) scale(1); }
-    }
-
-    .splash-card {
-      background: rgba(255, 255, 255, 0.94);
-      backdrop-filter: blur(18px);
-      border-radius: 72px;
-      padding: 48px 36px 56px;
-      text-align: center;
-      box-shadow: 0 35px 55px -20px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255,255,255,0.7);
-      transition: transform 0.2s ease;
-      border: 1px solid rgba(255,255,255,0.5);
-    }
-
-    .splash-card:hover {
-      transform: scale(1.01);
-    }
-
-    /* logo container */
-    .logo-container {
-      margin-bottom: 20px;
-    }
-
-    .logo-icon {
-      width: 88px;
-      height: 88px;
-      background: linear-gradient(145deg, #111, #1f2937);
-      border-radius: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 16px;
-      box-shadow: 0 18px 28px -12px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255,255,255,0.1);
-      transition: all 0.3s;
-    }
-
-    .logo-icon svg {
-      width: 48px;
-      height: 48px;
-      stroke: white;
-      stroke-width: 1.7;
-      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
-    }
-
-    .logo-text {
-      font-size: 32px;
-      font-weight: 800;
-      letter-spacing: -0.8px;
-      background: linear-gradient(135deg, #0f172a, #1e293b);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      line-height: 1.2;
-    }
-
-    .logo-text span {
-      background: linear-gradient(135deg, #1a56db, #3b82f6);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .badge-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(26,86,219,0.12);
-      backdrop-filter: blur(2px);
-      padding: 6px 16px;
-      border-radius: 60px;
-      font-size: 13px;
-      font-weight: 500;
-      color: #1a56db;
-      margin-top: 14px;
-    }
-
-    .badge-tag i {
-      font-size: 12px;
-    }
-
-    /* loader area */
-    .loader-area {
-      margin: 44px 0 28px;
-    }
-
-    .progress-ring {
-      width: 80px;
-      height: 80px;
-      margin: 0 auto;
-      position: relative;
-    }
-
-    .progress-ring svg {
-      transform: rotate(-90deg);
-    }
-
-    .progress-ring circle {
+    /* The outer ring */
+    .ring-outer {
       fill: none;
-      stroke-width: 4;
+      stroke: var(--black);
+      stroke-width: 3.5;
+      stroke-dasharray: 301;
+      stroke-dashoffset: 301;
+      animation: drawRing 0.7s cubic-bezier(0.6, 0, 0.4, 1) 0.4s forwards;
+    }
+
+    @keyframes drawRing {
+      to { stroke-dashoffset: 0; }
+    }
+
+    /* letter N paths */
+    .n-path {
+      fill: none;
+      stroke: var(--black);
+      stroke-width: 3.5;
       stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 120;
+      stroke-dashoffset: 120;
+      animation: drawN 0.5s cubic-bezier(0.6, 0, 0.3, 1) 0.8s forwards;
     }
 
-    .progress-ring .bg-circle {
-      stroke: #e2e8f0;
+    .spark-dot {
+      fill: var(--accent);
+      r: 0;
+      animation: popDot 0.3s ease 1.15s forwards;
     }
 
-    .progress-ring .fill-circle {
-      stroke: url(#grad);
-      stroke-dasharray: 226;
-      stroke-dashoffset: 226;
-      transition: stroke-dashoffset 0.08s linear;
+    @keyframes drawN {
+      to { stroke-dashoffset: 0; }
     }
 
-    .loading-percent {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 20px;
-      font-weight: 700;
-      color: #1a56db;
+    @keyframes popDot {
+      to { r: 5; }
     }
 
-    .status-msg {
-      margin-top: 24px;
-      font-size: 15px;
-      font-weight: 500;
-      background: #f8fafc;
-      display: inline-block;
-      padding: 8px 22px;
-      border-radius: 100px;
-      color: #0f172a;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.02);
-    }
-
-    .status-msg i {
-      margin-right: 8px;
-      color: #1a56db;
-    }
-
-    .dot-loader {
+    /* wordmark */
+    .wordmark {
       display: flex;
-      justify-content: center;
-      gap: 8px;
-      margin-top: 20px;
-    }
-
-    .dot-loader span {
-      width: 8px;
-      height: 8px;
-      background: #1a56db;
-      border-radius: 50%;
-      opacity: 0.3;
-      animation: wave 0.9s infinite ease-in-out;
-    }
-
-    .dot-loader span:nth-child(2) { animation-delay: 0.15s; background: #3b82f6; }
-    .dot-loader span:nth-child(3) { animation-delay: 0.3s; background: #60a5fa; }
-
-    @keyframes wave {
-      0%, 100% { opacity: 0.2; transform: translateY(0); }
-      50% { opacity: 1; transform: translateY(-4px); }
-    }
-
-    .enter-link {
-      margin-top: 28px;
-      display: inline-flex;
+      flex-direction: column;
       align-items: center;
-      gap: 8px;
-      font-size: 14px;
+      gap: 2px;
+    }
+
+    .wordmark-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 32px;
+      letter-spacing: -1px;
+      color: var(--black);
+      line-height: 1;
+    }
+
+    .wordmark-title span {
+      color: var(--accent);
+    }
+
+    .wordmark-sub {
+      font-size: 11.5px;
       font-weight: 500;
-      color: #4b5563;
-      text-decoration: none;
-      border-bottom: 1.5px dashed #cbd5e1;
-      transition: all 0.2s;
-      cursor: pointer;
+      letter-spacing: 3.5px;
+      text-transform: uppercase;
+      color: var(--muted);
     }
 
-    .enter-link:hover {
-      color: #1a56db;
-      border-bottom-color: #1a56db;
-      gap: 10px;
+    @keyframes fadeIn {
+      to { opacity: 1; }
     }
 
-    .footer-copyright {
-      margin-top: 38px;
+    /* ---- VERSION ---- */
+    .version-tag {
+      position: fixed;
+      top: 32px;
+      right: 32px;
       font-size: 11px;
-      color: #94a3b8;
-      display: flex;
-      justify-content: center;
-      gap: 18px;
-      flex-wrap: wrap;
+      font-weight: 500;
+      color: #d4d4d8;
+      letter-spacing: 1px;
+      opacity: 0;
+      animation: fadeIn 0.5s ease 1.4s forwards;
     }
 
-    .footer-copyright i {
-      font-size: 10px;
+    /* exit animation */
+    .scene.exit {
+      animation: fadeOut 0.25s ease forwards;
     }
 
-    @media (max-width: 550px) {
-      .splash-card {
-        padding: 36px 24px 44px;
-        border-radius: 56px;
-      }
-      .logo-icon {
-        width: 74px;
-        height: 74px;
-      }
-      .logo-icon svg {
-        width: 40px;
-        height: 40px;
-      }
-      .logo-text {
-        font-size: 26px;
-      }
-      .status-msg {
-        font-size: 13px;
-        padding: 6px 18px;
-      }
-      .progress-ring {
-        width: 70px;
-        height: 70px;
-      }
+    @keyframes fadeOut {
+      to { opacity: 0; transform: scale(0.97); }
     }
   </style>
 </head>
 <body>
 
-  <div class="blob blob-1"></div>
-  <div class="blob blob-2"></div>
-  <div class="blob blob-3"></div>
-  <div class="blob blob-4"></div>
+  <span class="version-tag">v2.0</span>
 
-  <div class="splash-wrapper">
-    <div class="splash-card">
-      <div class="logo-container">
-        <div class="logo-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M12 2L2 7l10 5 10-5-10-5z" />
-            <path d="M2 17l10 5 10-5" />
-            <path d="M2 12l10 5 10-5" />
-          </svg>
-        </div>
-        <div class="logo-text">Nickname <span>Styler</span></div>
-        <div class="badge-tag">
-          <i class="fas fa-crown"></i> Premium nickname studio
-        </div>
+  <div class="scene" id="scene">
+
+    <div class="logo-wrap">
+
+      <!-- SVG Logo Mark -->
+      <div class="logo-mark">
+        <svg viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- outer circle -->
+          <circle class="ring-outer" cx="48" cy="48" r="44" stroke-linecap="round"/>
+
+          <!-- Stylised N letterform inside -->
+          <polyline class="n-path" points="30,64 30,32 54,64 54,32" stroke-dasharray="160" stroke-dashoffset="160"/>
+          <line class="n-path" x1="54" y1="32" x2="66" y2="32" stroke-dasharray="20" stroke-dashoffset="20"/>
+
+          <!-- accent dot -->
+          <circle class="spark-dot" cx="66" cy="47" r="0"/>
+        </svg>
       </div>
 
-      <div class="loader-area">
-        <div class="progress-ring">
-          <svg width="80" height="80" viewBox="0 0 80 80">
-            <defs>
-              <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#1a56db" />
-                <stop offset="100%" stop-color="#3b82f6" />
-              </linearGradient>
-            </defs>
-            <circle class="bg-circle" cx="40" cy="40" r="36" stroke="#e2e8f0" stroke-width="4" fill="none" />
-            <circle class="fill-circle" cx="40" cy="40" r="36" stroke="url(#grad)" stroke-width="4" fill="none" />
-          </svg>
-          <div class="loading-percent" id="percentValue">0%</div>
-        </div>
-        <div class="status-msg" id="dynamicStatus">
-          <i class="fas fa-magic"></i> Loading creative tools...
-        </div>
-        <div class="dot-loader">
-          <span></span><span></span><span></span>
-        </div>
+      <!-- Wordmark -->
+      <div class="wordmark">
+        <div class="wordmark-title">Nickname<span>Styler</span></div>
+        <div class="wordmark-sub">Premium Studio</div>
       </div>
 
-      <a href="javascript:void(0);" id="skipToSite" class="enter-link">
-        <i class="fas fa-arrow-right-to-bracket"></i> Enter Nickname Styler →
-      </a>
-
-      <div class="footer-copyright">
-        <span><i class="far fa-gem"></i> 10k+ styles</span>
-        <span><i class="fas fa-gamepad"></i> Gaming fonts</span>
-        <span><i class="fas fa-shield-alt"></i> Privacy first</span>
-      </div>
     </div>
+
   </div>
 
   <script>
-    (function() {
-      // FAST LOADING — less than 1 second (600ms)
-      const fillCircle = document.querySelector('.fill-circle');
-      const percentSpan = document.getElementById('percentValue');
-      const statusDiv = document.getElementById('dynamicStatus');
-      const skipBtn = document.getElementById('skipToSite');
-      
-      const circumference = 2 * Math.PI * 36; // ~226.19
-      let progress = 0;
-      let interval = null;
-      let redirectTimer = null;
-      
-      const STEP_TIME = 20;          // update every 20ms for smoothness
-      const TOTAL_DURATION = 600;    // 0.6 seconds total loading
-      const INCREMENT = 100 / (TOTAL_DURATION / STEP_TIME);
-      
-      const statusMessages = [
-        { threshold: 0, text: '<i class="fas fa-sparkles"></i> Awakening creativity...' },
-        { threshold: 30, text: '<i class="fas fa-palette"></i> Loading stylish fonts' },
-        { threshold: 60, text: '<i class="fas fa-robot"></i> Generating cool nicknames' },
-        { threshold: 85, text: '<i class="fas fa-crown"></i> Almost ready!' },
-        { threshold: 95, text: '<i class="fas fa-check-circle"></i> Welcome!' }
-      ];
-      
-      function updateRing(percent) {
-        const offset = circumference - (percent / 100) * circumference;
-        if (fillCircle) {
-          fillCircle.style.strokeDasharray = circumference;
-          fillCircle.style.strokeDashoffset = offset;
-        }
-        percentSpan.innerText = `${Math.floor(percent)}%`;
-        
-        let activeMsg = statusMessages[0].text;
-        for (let i = statusMessages.length-1; i >= 0; i--) {
-          if (percent >= statusMessages[i].threshold) {
-            activeMsg = statusMessages[i].text;
-            break;
-          }
-        }
-        statusDiv.innerHTML = activeMsg;
+    (function () {
+      const scene = document.getElementById('scene');
+
+      function redirect() {
+        scene.classList.add('exit');
+        setTimeout(() => { window.location.href = 'nickname-styler/index.html'; }, 250);
       }
-      
-      function finishAndRedirect() {
-        if (interval) clearInterval(interval);
-        if (redirectTimer) clearTimeout(redirectTimer);
-        updateRing(100);
-        statusDiv.innerHTML = '<i class="fas fa-check-circle" style="color:#10b981"></i> Redirecting...';
-        redirectTimer = setTimeout(() => {
-          window.location.href = "nickname-styler/index.html";
-        }, 150);
-      }
-      
-      function startLoader() {
-        interval = setInterval(() => {
-          if (progress >= 100) {
-            finishAndRedirect();
-            return;
-          }
-          progress = Math.min(progress + INCREMENT, 100);
-          updateRing(progress);
-        }, STEP_TIME);
-      }
-      
-      skipBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        if (interval) clearInterval(interval);
-        if (redirectTimer) clearTimeout(redirectTimer);
-        const wrapper = document.querySelector('.splash-wrapper');
-        wrapper.style.transition = 'opacity 0.15s ease';
-        wrapper.style.opacity = '0';
-        setTimeout(() => {
-          window.location.href = "nickname-styler/index.html";
-        }, 120);
-      });
-      
-      startLoader();
-      
-      // extra safety: force redirect if something goes wrong after 1.2 sec
-      setTimeout(() => {
-        if (progress < 100) {
-          if (interval) clearInterval(interval);
-          window.location.href = "nickname-styler/index.html";
-        }
-      }, 1200);
-      
-      updateRing(0);
+
+      // Redirect after 2.5 seconds
+      setTimeout(redirect, 2500);
     })();
   </script>
 </body>
