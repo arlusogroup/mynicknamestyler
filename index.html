@@ -3,14 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <title>Nickname Styler — Entry</title>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <title>Nickname Styler — Splash</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Syne:wght@700;800&display=swap" rel="stylesheet">
   <style>
-    *, *::before, *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
       --white: #ffffff;
@@ -20,7 +16,6 @@
       --mid: #f4f4f5;
       --muted: #a1a1aa;
       --radius: 28px;
-      --transition-smooth: cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     html, body {
@@ -34,7 +29,7 @@
       overflow: hidden;
     }
 
-    /* subtle noise texture */
+    /* subtle noise texture overlay */
     body::before {
       content: '';
       position: fixed;
@@ -44,53 +39,30 @@
       z-index: 0;
     }
 
-    /* main container */
+    /* ---- Layout ---- */
     .scene {
       position: relative;
-      z-index: 2;
+      z-index: 1;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       gap: 0;
       opacity: 0;
-      animation: fadeUp 0.6s var(--transition-smooth) 0.1s forwards;
-      will-change: transform, opacity;
+      animation: fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
     }
 
     @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(18px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* exit animation (triggered on click) */
-    .scene.exit {
-      animation: fadeOut 0.28s ease forwards;
-    }
-
-    @keyframes fadeOut {
-      0% {
-        opacity: 1;
-        transform: scale(1);
-      }
-      100% {
-        opacity: 0;
-        transform: scale(0.96);
-      }
-    }
-
-    /* LOGO SECTION */
+    /* ---- LOGO ---- */
     .logo-wrap {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 24px;
+      gap: 20px;
     }
 
     .logo-mark {
@@ -99,27 +71,28 @@
       position: relative;
     }
 
+    /* SVG logo paths animated in */
     .logo-mark svg {
       width: 100%;
       height: 100%;
       overflow: visible;
     }
 
-    /* outer ring drawing */
+    /* The outer ring */
     .ring-outer {
       fill: none;
       stroke: var(--black);
       stroke-width: 3.5;
       stroke-dasharray: 301;
       stroke-dashoffset: 301;
-      animation: drawRing 0.7s var(--transition-smooth) 0.4s forwards;
+      animation: drawRing 0.7s cubic-bezier(0.6, 0, 0.4, 1) 0.4s forwards;
     }
 
     @keyframes drawRing {
       to { stroke-dashoffset: 0; }
     }
 
-    /* stylised N letterform */
+    /* letter N paths */
     .n-path {
       fill: none;
       stroke: var(--black);
@@ -128,7 +101,7 @@
       stroke-linejoin: round;
       stroke-dasharray: 120;
       stroke-dashoffset: 120;
-      animation: drawN 0.5s var(--transition-smooth) 0.8s forwards;
+      animation: drawN 0.5s cubic-bezier(0.6, 0, 0.3, 1) 0.8s forwards;
     }
 
     .spark-dot {
@@ -150,7 +123,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 4px;
+      gap: 2px;
     }
 
     .wordmark-title {
@@ -159,7 +132,7 @@
       font-size: 32px;
       letter-spacing: -1px;
       color: var(--black);
-      line-height: 1.2;
+      line-height: 1;
     }
 
     .wordmark-title span {
@@ -167,78 +140,21 @@
     }
 
     .wordmark-sub {
-      font-size: 11px;
+      font-size: 11.5px;
       font-weight: 500;
       letter-spacing: 3.5px;
       text-transform: uppercase;
       color: var(--muted);
     }
 
-    /* ----- CTA BUTTON (OPEN PAGE) ----- */
-    .action-container {
-      margin-top: 52px;
-      text-align: center;
-    }
-
-    .open-link {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      background: var(--black);
-      color: var(--white);
-      padding: 14px 38px;
-      border-radius: 60px;
-      font-weight: 600;
-      font-size: 1rem;
-      font-family: 'DM Sans', sans-serif;
-      text-decoration: none;
-      letter-spacing: -0.2px;
-      transition: all 0.3s var(--transition-smooth);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(2px);
-      cursor: pointer;
-    }
-
-    .open-link span {
-      transition: transform 0.2s ease;
-    }
-
-    .open-link:hover {
-      background: var(--accent);
-      transform: scale(1.02);
-      box-shadow: 0 18px 28px -12px rgba(0, 0, 0, 0.2);
-    }
-
-    .open-link:hover span {
-      transform: translateX(4px);
-    }
-
-    /* optional micro interaction */
-    .open-link:active {
-      transform: scale(0.98);
-    }
-
-    /* subtle hint / tag */
-    .hint-text {
-      margin-top: 24px;
-      font-size: 12px;
-      font-weight: 450;
-      color: #b0b0b8;
-      letter-spacing: 0.3px;
-      opacity: 0;
-      animation: fadeIn 0.5s ease 1.5s forwards;
-    }
-
     @keyframes fadeIn {
       to { opacity: 1; }
     }
 
-    /* version corner */
+    /* ---- VERSION ---- */
     .version-tag {
       position: fixed;
-      top: 28px;
+      top: 32px;
       right: 32px;
       font-size: 11px;
       font-weight: 500;
@@ -246,54 +162,37 @@
       letter-spacing: 1px;
       opacity: 0;
       animation: fadeIn 0.5s ease 1.4s forwards;
-      z-index: 10;
-      background: rgba(255, 255, 255, 0.5);
-      backdrop-filter: blur(8px);
-      padding: 4px 12px;
-      border-radius: 40px;
     }
 
-    /* responsive adjustments */
-    @media (max-width: 500px) {
-      .logo-mark {
-        width: 80px;
-        height: 80px;
-      }
-      .wordmark-title {
-        font-size: 28px;
-      }
-      .open-link {
-        padding: 12px 32px;
-        font-size: 0.95rem;
-      }
-      .action-container {
-        margin-top: 42px;
-      }
-      .version-tag {
-        top: 20px;
-        right: 20px;
-        font-size: 10px;
-      }
+    /* exit animation */
+    .scene.exit {
+      animation: fadeOut 0.25s ease forwards;
+    }
+
+    @keyframes fadeOut {
+      to { opacity: 0; transform: scale(0.97); }
     }
   </style>
 </head>
 <body>
 
-  <div class="version-tag">v2.0 • studio</div>
+  <span class="version-tag">v2.0</span>
 
   <div class="scene" id="scene">
+
     <div class="logo-wrap">
-      <!-- SVG Logo Mark (animated) -->
+
+      <!-- SVG Logo Mark -->
       <div class="logo-mark">
         <svg viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- outer ring -->
+          <!-- outer circle -->
           <circle class="ring-outer" cx="48" cy="48" r="44" stroke-linecap="round"/>
-          
-          <!-- Stylised N letterform (diagonal & straight lines) -->
+
+          <!-- Stylised N letterform inside -->
           <polyline class="n-path" points="30,64 30,32 54,64 54,32" stroke-dasharray="160" stroke-dashoffset="160"/>
           <line class="n-path" x1="54" y1="32" x2="66" y2="32" stroke-dasharray="20" stroke-dashoffset="20"/>
-          
-          <!-- accent dot that pops -->
+
+          <!-- accent dot -->
           <circle class="spark-dot" cx="66" cy="47" r="0"/>
         </svg>
       </div>
@@ -303,64 +202,23 @@
         <div class="wordmark-title">Nickname<span>Styler</span></div>
         <div class="wordmark-sub">Premium Studio</div>
       </div>
+
     </div>
 
-    <!-- MANUAL OPEN PAGE LINK (exactly as requested) -->
-    <div class="action-container">
-      <a href="/nickname-styler/" class="open-link" id="openPageBtn">
-        Open Page <span>→</span>
-      </a>
-      <div class="hint-text">click to enter · immersive experience</div>
-    </div>
   </div>
 
   <script>
-    (function() {
+    (function () {
       const scene = document.getElementById('scene');
-      const openButton = document.getElementById('openPageBtn');
-      
-      // Navigation guard to avoid double-trigger
-      let isNavigating = false;
-      
-      // destination URL from the anchor's href attribute
-      const targetUrl = openButton.getAttribute('href');
-      
-      // graceful exit + redirect with same smooth animation as original concept
-      function performRedirect(event) {
-        if (event) event.preventDefault();
-        if (isNavigating) return;
-        
-        isNavigating = true;
-        
-        // add exit animation class to the scene
+
+      function redirect() {
         scene.classList.add('exit');
-        
-        // wait for exit animation to finish, then navigate
-        setTimeout(() => {
-          window.location.href = targetUrl;
-        }, 260); // matches fadeOut duration (0.28s)
+        // CLEAN URL: no .html, just the folder path
+        setTimeout(() => { window.location.href = '/nickname-styler/'; }, 250);
       }
-      
-      // attach click event to the custom link
-      if (openButton) {
-        openButton.addEventListener('click', performRedirect);
-      }
-      
-      // Optional: keyboard accessibility — pressing Enter while link focused works natively
-      // but we need to also handle if someone uses keyboard 'enter' on the link:
-      openButton.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          performRedirect(e);
-        }
-      });
-      
-      // Remove any legacy automatic redirect
-      // The original auto-redirect timer is completely removed.
-      // No setTimeout for auto-redirect, full control given to user.
-      
-      // small polish: preload subtle hint for smoother experience (just visual)
-      console.log('✨ Splash ready — manual redirect via “Open Page”');
+
+      // Redirect after 2.5 seconds
+      setTimeout(redirect, 2500);
     })();
   </script>
 </body>
