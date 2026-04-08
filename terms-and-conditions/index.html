@@ -1,1 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Terms & Conditions — MyNicknameStyler</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* All CSS unchanged */
+    :root {
+      --white: #ffffff;
+      --off-white: #f8f8f6;
+      --ink: #111111;
+      --mid: #444444;
+      --light: #888888;
+      --accent: #2563eb;
+      --accent-dark: #1e40af;
+      --accent-light: #eef2ff;
+      --accent-glow: rgba(37, 99, 235, 0.15);
+      --border: #e9e9e5;
+      --section-bg: #fbfbf9;
+      --card-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.02);
+      --card-hover-shadow: 0 28px 45px -16px rgba(37, 99, 235, 0.18), 0 2px 8px rgba(0,0,0,0.05);
+      --highlight-bg: linear-gradient(120deg, rgba(37,99,235,0.12) 0%, rgba(37,99,235,0.05) 80%);
+      --highlight-border-left: 4px solid var(--accent);
+      --glass-bg: rgba(255, 255, 255, 0.88);
+      --gradient-subtle: linear-gradient(145deg, #fafcff, #f2f6fe);
+    }
 
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--white);
+      color: var(--ink);
+      font-size: 15px;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    header {
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      padding: 14px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      background: var(--glass-bg);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+      transition: all 0.3s ease;
+    }
+    .back-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(0,0,0,0.02);
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 60px;
+      padding: 8px 22px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--mid);
+      cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      text-decoration: none;
+      font-family: 'DM Sans', sans-serif;
+      letter-spacing: -0.2px;
+    }
+    .back-btn i { font-size: 13px; transition: transform 0.25s ease; }
+    .back-btn:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
+      box-shadow: 0 6px 14px var(--accent-glow);
+    }
+    .back-btn:hover i { transform: translateX(-4px); }
+    .header-center {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      font-weight: 650;
+      font-size: 17px;
+      letter-spacing: -0.3px;
+      color: var(--ink);
+      background: rgba(255,255,255,0.75);
+      backdrop-filter: blur(6px);
+      padding: 6px 28px;
+      border-radius: 60px;
+      white-space: nowrap;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+      border: 1px solid rgba(0,0,0,0.03);
+    }
+    .header-placeholder { width: 118px; visibility: hidden; }
+
+    @media (max-width: 680px) {
+      header { padding: 12px 20px; }
+      .back-btn { padding: 6px 16px; font-size: 12px; gap: 6px; }
+      .header-center {
+        font-size: 13px; padding: 4px 14px; white-space: nowrap;
+        position: static; transform: none; margin: 0 auto;
+      }
+      .header-placeholder { display: none; }
+      header { justify-content: center; gap: 12px; }
+      .back-btn { margin-right: auto; }
+    }
+
+    .hero { padding: 72px 48px 56px; max-width: 860px; margin: 0 auto; }
+    .hero-eyebrow {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 1.4px; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 18px;
+    }
+    .hero-eyebrow::before {
+      content: ''; width: 28px; height: 2px;
+      background: linear-gradient(90deg, var(--accent), #a5c9ff);
+      display: inline-block; border-radius: 4px;
+    }
+    h1 {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      font-size: clamp(38px, 5.5vw, 56px);
+      line-height: 1.12;
+      letter-spacing: -1.2px;
+      color: var(--ink);
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .hero-meta {
+      color: var(--mid); font-size: 14px; font-weight: 350;
+      display: flex; gap: 16px; flex-wrap: wrap;
+    }
+
+    .summary-box { max-width: 980px; margin: 0 auto 64px; padding: 0 32px; }
+    .summary-inner {
+      background: var(--gradient-subtle);
+      border: 1px solid rgba(37,99,235,0.2);
+      border-radius: 36px;
+      padding: 40px 48px;
+      box-shadow: var(--card-shadow);
+    }
+    .summary-header-badge {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 14px; margin-bottom: 28px;
+    }
+    .summary-badge-left {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: linear-gradient(135deg, var(--accent), #1d4ed8);
+      padding: 10px 24px; border-radius: 60px;
+      color: white; font-size: 13px; font-weight: 600;
+      letter-spacing: 0.5px;
+      box-shadow: 0 8px 14px -6px rgba(37,99,235,0.3);
+    }
+    .summary-badge-right {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(37,99,235,0.08); padding: 8px 20px;
+      border-radius: 40px; font-size: 12px; font-weight: 500;
+      color: var(--accent-dark);
+    }
+    .enhanced-summary-card {
+      background: var(--white); border-radius: 30px; overflow: hidden;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.03);
+      border: 1px solid rgba(37,99,235,0.12);
+    }
+    .summary-heading {
+      padding: 28px 36px 14px 36px;
+      border-bottom: 2px solid #eef2ff;
+    }
+    .summary-heading-inner {
+      display: flex; align-items: center; gap: 14px;
+    }
+    .summary-heading-icon {
+      width: 52px; height: 52px;
+      background: linear-gradient(145deg, #eef4ff, #dfe9ff);
+      border-radius: 20px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--accent); font-size: 24px;
+      transition: all 0.3s ease;
+    }
+    .summary-heading-icon:hover {
+      transform: rotate(5deg) scale(1.04);
+      color: var(--accent-dark);
+      box-shadow: 0 6px 12px rgba(37,99,235,0.12);
+    }
+    .summary-heading h3 {
+      font-weight: 700; font-size: 22px;
+      letter-spacing: -0.4px; margin: 0;
+    }
+    .summary-list-container { padding: 28px 36px 24px 36px; }
+    .summary-list {
+      display: flex; flex-direction: column; gap: 20px; list-style: none;
+    }
+    .summary-list li {
+      display: flex; align-items: flex-start; gap: 18px;
+      font-size: 15.5px; color: #1f2a41; line-height: 1.6;
+      transition: transform 0.2s;
+    }
+    .summary-list li:hover { transform: translateX(6px); }
+    .list-icon {
+      flex-shrink: 0; width: 32px; height: 32px;
+      background: #eef4ff; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--accent); font-size: 14px;
+      transition: all 0.25s;
+    }
+    .summary-list li:hover .list-icon {
+      background: var(--accent); color: white;
+      transform: scale(1.12) rotate(4deg);
+    }
+    .list-text strong {
+      color: var(--ink); font-weight: 700;
+      background: var(--highlight-bg);
+      padding: 2px 10px; border-radius: 20px;
+      display: inline-block;
+    }
+    .legal-note-footer {
+      background: #f9faff; padding: 20px 36px 28px 36px;
+      border-top: 1px solid #edf2f7;
+      display: flex; align-items: center; gap: 14px;
+      font-size: 12.5px; color: #4a5a72;
+    }
+
+    main { max-width: 980px; margin: 0 auto; padding: 0 48px 80px; }
+    .terms-grid { display: flex; flex-direction: column; gap: 30px; }
+    .term-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 28px;
+      transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+      opacity: 0; transform: translateY(18px);
+      animation: fadeUp 0.6s ease forwards;
+    }
+    .term-card:hover {
+      border-color: rgba(37,99,235,0.25);
+      box-shadow: var(--card-hover-shadow);
+      transform: translateY(-4px);
+      background: #fdfdfd;
+    }
+    .term-header {
+      display: flex; align-items: center; gap: 18px;
+      padding: 22px 32px 14px 32px;
+      border-bottom: 1px solid var(--border);
+      background: var(--white);
+    }
+    .term-number {
+      width: 54px; height: 54px;
+      background: linear-gradient(145deg, #1e293b, #0f172a);
+      color: white; border-radius: 22px;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 22px; flex-shrink: 0;
+      box-shadow: 0 8px 16px -8px rgba(0,0,0,0.15);
+      transition: all 0.3s;
+    }
+    .term-card:hover .term-number {
+      background: linear-gradient(145deg, var(--accent), #1e4bd2);
+      transform: scale(1.05) rotate(2deg);
+      box-shadow: 0 12px 20px -8px rgba(37,99,235,0.3);
+    }
+    .term-title {
+      font-weight: 650; font-size: 22px;
+      letter-spacing: -0.3px; color: var(--ink); flex: 1;
+    }
+    .term-icon {
+      width: 46px; height: 46px;
+      background: var(--section-bg); border: 1px solid var(--border);
+      border-radius: 18px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--mid); font-size: 20px; transition: all 0.3s;
+    }
+    .term-card:hover .term-icon {
+      background: var(--accent-light); color: var(--accent);
+      border-color: var(--accent-light);
+      transform: scale(1.1) rotate(8deg);
+    }
+    .term-content { padding: 24px 32px 28px 32px; }
+    .term-content p {
+      color: var(--mid); margin-bottom: 16px;
+      font-weight: 400; line-height: 1.7; font-size: 15.5px;
+    }
+    .highlight {
+      background: var(--highlight-bg);
+      border-left: var(--highlight-border-left);
+      padding: 2px 10px; border-radius: 0 16px 16px 0;
+      font-weight: 600; color: #0a1e3c; display: inline-block;
+    }
+    .highlight-strong {
+      background: linear-gradient(120deg, rgba(37,99,235,0.18), rgba(37,99,235,0.06));
+      font-weight: 700; padding: 0 6px; border-radius: 12px;
+      color: var(--accent-dark);
+    }
+    mark {
+      background: linear-gradient(120deg, #fef9c3, #fcf5d8);
+      padding: 0 8px; border-radius: 16px;
+      color: #7a5e0a; font-weight: 550;
+    }
+    .term-content ul {
+      list-style: none; padding: 0; margin: 14px 0 0 0;
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .term-content ul li {
+      display: flex; align-items: flex-start; gap: 14px;
+      color: var(--mid); font-weight: 400; font-size: 15px;
+      transition: transform 0.15s;
+    }
+    .term-content ul li:hover { transform: translateX(5px); }
+    .term-content ul li::before {
+      content: "→"; color: var(--accent); font-weight: 600;
+      flex-shrink: 0; transition: transform 0.2s;
+    }
+    .term-content ul li:hover::before { transform: translateX(3px); }
+    .term-content ul.not-list li::before {
+      content: "✕"; color: #dc2626; font-weight: 700;
+    }
+    .term-content .extra-detail {
+      margin-top: 16px; padding-top: 12px;
+      border-top: 1px dashed rgba(0,0,0,0.08);
+      font-size: 14px; color: #5a6a7e;
+      display: flex; gap: 10px;
+    }
+
+    footer {
+      background: linear-gradient(135deg, #f9fafc, #f2f4f8);
+      border-top: 1px solid rgba(0,0,0,0.05);
+      padding: 34px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 22px;
+      color: var(--mid); font-size: 14px; font-weight: 450;
+      cursor: pointer; box-shadow: 0 -4px 12px rgba(0,0,0,0.02);
+    }
+    .footer-left { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+    .footer-left i { font-size: 15px; color: var(--accent); opacity: 0.8; }
+    .footer-right { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
+    .footer-right a {
+      color: var(--mid); text-decoration: none; transition: all 0.2s;
+      font-weight: 520; display: inline-flex; align-items: center; gap: 8px;
+      padding: 4px 10px; border-radius: 40px; background: transparent;
+    }
+    .footer-right a i { font-size: 12px; transition: transform 0.2s; }
+    .footer-right a:hover {
+      color: var(--accent); background: rgba(37,99,235,0.06);
+      transform: translateY(-1px);
+    }
+    .footer-right a:hover i { transform: translateX(3px); }
+    footer:hover {
+      background: #ffffff; border-top-color: rgba(37,99,235,0.15);
+    }
+
+    @media (max-width: 780px) {
+      .summary-inner { padding: 28px 28px; }
+      .term-header { padding: 18px 24px 12px 24px; }
+      .term-content { padding: 20px 24px 24px 24px; }
+      .term-number { width: 46px; height: 46px; font-size: 20px; border-radius: 18px; }
+      .term-title { font-size: 19px; }
+    }
+    @media (max-width: 680px) {
+      footer { padding: 26px 24px; flex-direction: column; text-align: center; }
+      .footer-right { justify-content: center; gap: 18px; }
+      .footer-left { justify-content: center; }
+    }
+    @media (max-width: 640px) {
+      .hero { padding: 48px 22px 40px; }
+      .summary-box { padding: 0 20px; }
+      .summary-inner { padding: 22px; }
+      main { padding: 0 20px 60px; }
+      .term-title { font-size: 18px; }
+      h1 { font-size: 34px; }
+    }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .term-card:nth-child(1) { animation-delay: 0.02s; }
+    .term-card:nth-child(2) { animation-delay: 0.05s; }
+    .term-card:nth-child(3) { animation-delay: 0.08s; }
+    .term-card:nth-child(4) { animation-delay: 0.11s; }
+    .term-card:nth-child(5) { animation-delay: 0.14s; }
+    .term-card:nth-child(6) { animation-delay: 0.17s; }
+    .term-card:nth-child(7) { animation-delay: 0.20s; }
+    .term-card:nth-child(8) { animation-delay: 0.23s; }
+    .term-card:nth-child(9) { animation-delay: 0.26s; }
+    .term-card:nth-child(10) { animation-delay: 0.29s; }
+    .term-card:nth-child(11) { animation-delay: 0.32s; }
+    .term-card:nth-child(12) { animation-delay: 0.35s; }
+    .term-card:nth-child(13) { animation-delay: 0.38s; }
+    .term-card:nth-child(14) { animation-delay: 0.41s; }
+    .term-card:nth-child(15) { animation-delay: 0.44s; }
+    .term-card:nth-child(16) { animation-delay: 0.47s; }
+    .term-card:nth-child(17) { animation-delay: 0.50s; }
+  </style>
+</head>
+<body>
+
+<!-- HEADER — Back button points to /nickname-styler/ -->
+<header>
+  <a href="/nickname-styler/" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Home</a>
+  <div class="header-center"><i class="fas fa-gavel" style="margin-right: 6px; font-size: 13px;"></i> Terms & Conditions</div>
+  <div class="header-placeholder"></div>
+</header>
+
+<div class="hero">
+  <div class="hero-eyebrow">Legal Document</div>
+  <h1>Terms & Conditions</h1>
+  <p class="hero-meta"><span>Effective: 31 March 2026</span><span>·</span><span>Last Updated: 8 April 2026</span><span>·</span><span>Governed by Indian Law</span></p>
+</div>
+
+<!-- SUMMARY BOX -->
+<div class="summary-box">
+  <div class="summary-inner">
+    <div class="summary-header-badge">
+      <div class="summary-badge-left"><i class="fas fa-gavel"></i> LEGAL SUMMARY</div>
+      <div class="summary-badge-right"><i class="fas fa-clock"></i> Read in 2 min</div>
+    </div>
+    <div class="enhanced-summary-card">
+      <div class="summary-heading">
+        <div class="summary-heading-inner">
+          <div class="summary-heading-icon"><i class="fas fa-file-alt"></i></div>
+          <div><h3>Quick reference guide</h3><p style="font-size:13px; opacity:0.8;">Informational summary — not legally binding</p></div>
+        </div>
+      </div>
+      <div class="summary-list-container">
+        <ul class="summary-list">
+          <li><div class="list-icon"><i class="fas fa-user-check"></i></div><div class="list-text">You must be <strong class="highlight">13 or older</strong> (parental guidance under 18).</div></li>
+          <li><div class="list-icon"><i class="fas fa-info-circle"></i></div><div class="list-text">Content is for <strong class="highlight">informational & entertainment</strong> use only, not professional advice.</div></li>
+          <li><div class="list-icon"><i class="fas fa-balance-scale"></i></div><div class="list-text">Use lawfully; no harassment, no rights infringement.</div></li>
+          <li><div class="list-icon"><i class="fas fa-ad"></i></div><div class="list-text">Third‑party ads/links — external services at <strong class="highlight">your own risk</strong>.</div></li>
+          <li><div class="list-icon"><i class="fas fa-list-ul"></i></div><div class="list-text">You grant license for any public content you submit.</div></li>
+          <li><div class="list-icon"><i class="fas fa-shield-alt"></i></div><div class="list-text">Service <strong class="highlight">"AS IS"</strong>, liability limited. Contact via site form.</div></li>
+        </ul>
+      </div>
+      <div class="legal-note-footer"><i class="fas fa-scale-balanced"></i><span>This summary is for convenience and does not replace the full Terms.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN TERMS SECTIONS -->
+<main>
+  <div class="terms-grid">
+    <div class="term-card">
+      <div class="term-header"><div class="term-number">1</div><div class="term-title">Acceptance of Terms</div><div class="term-icon"><i class="fas fa-check-circle"></i></div></div>
+      <div class="term-content">
+        <p>By accessing or using <strong class="highlight-strong">MyNicknameStyler</strong> (the "Website", "Service"), you confirm that you have read, understood, and agree to be legally bound by these Terms and Conditions, including any additional guidelines or future modifications. If you do not agree with any part of these Terms, you must immediately discontinue use of the Website. We may revise these Terms at any time without prior notice, and changes become effective upon posting. Your continued use after any modification constitutes acceptance of the updated Terms.</p>
+        <div class="extra-detail"><i class="fas fa-circle-info" style="color:var(--accent);"></i> You are responsible for periodically reviewing this page.</div>
+      </div>
+    </div>
+    <div class="term-card">
+      <div class="term-header"><div class="term-number">2</div><div class="term-title">Eligibility</div><div class="term-icon"><i class="fas fa-user-shield"></i></div></div>
+      <div class="term-content">
+        <p>The Website is designed for individuals aged <strong class="highlight">13 years and older</strong>. Users between 13 and 18 must review these Terms with a parent or legal guardian and obtain their consent. <mark>Users under 13 are strictly prohibited</mark> from using the Website or submitting any personal information. By using MyNicknameStyler, you represent and warrant that you meet the eligibility requirements.</p>
+      </div>
+    </div>
+    <div class="term-card">
+      <div class="term-header"><div class="term-number">3</div><div class="term-title">Description of Services</div><div class="term-icon"><i class="fas fa-tools"></i></div></div>
+      <div class="term-content">
+        <p>MyNicknameStyler provides tools and features including but not limited to: stylish nickname generators, font converters, symbol libraries, text decoration utilities, and a public nickname gallery. All services are offered for <strong class="highlight">personal, non‑commercial, entertainment purposes only</strong>. We do not guarantee that generated nicknames will be accepted by third‑party platforms (games, social networks), nor do we warrant uninterrupted, error‑free access.</p>
+        <p style="margin-top:12px;"><i class="fas fa-caret-right" style="color:var(--accent); margin-right:8px;"></i>We reserve the right to modify, suspend, or discontinue any feature without liability.</p>
+      </div>
+    </div>
+    <div class="term-card">
+      <div class="term-header"><div class="term-number">4</div><div class="term-title">User Responsibilities</div><div class="term-icon"><i class="fas fa-ban"></i></div></div>
+      <div class="term-content">
+        <p>You agree <strong class="highlight">NOT</strong> to engage in any of the following prohibited activities:</p>
+        <ul class="not-list">
+          <li>Use the Website for any unlawful purpose or in violation of any applicable laws.</li>
+          <li>Submit, post, or transmit content that is abusive, defamatory, obscene, hateful, harassing, or invasive of privacy.</li>
+          <li>Impersonate any person or entity, or falsely state affiliation.</li>
+          <li>Infringe upon intellectual property rights, including copyrights, trademarks, or trade secrets.</li>
+          <li>Attempt to gain unauthorized access, interfere with security, scrape data, reverse engineer, or deploy bots.</li>
+          <li>Upload viruses, malware, or any code of a destructive nature.</li>
+        </ul>
+        <p>Violation may result in immediate termination, content removal, and potential legal action.</p>
+      </div>
+    </div>
+    <div class="term-card">
+      <div class="term-header"><div class="term-number">5</div><div class="term-title">User‑Submitted Content</div><div class="term-icon"><i class="fas fa-upload"></i></div></div>
+      <div class="term-content">
+        <p>Any nickname, text, or other material you submit or display publicly through the Website ("User Content") may be visible to other visitors. By submitting User Content, you grant MyNicknameStyler a <strong class="highlight">non‑exclusive, worldwide, royalty‑free, perpetual, irrevocable license</strong> to use, reproduce, modify, adapt, publish, and display such content in connection with the Service. You represent that you own or have all necessary rights to the User Content and that it does not violate any third‑party rights.</p>
+        <p>We reserve the right, but have no obligation, to monitor, edit, or remove any User Content at our sole discretion.</p>
+      </div>
+    </div>
+    <div class="term-card">
+      <div class="term-header"><div class="term-number">6</div><div class="term-title">Intellectual Property</div><div class="term-icon"><i class="fas fa-copyright"></i></div></div>
+      <div class="term-content">
+        <p>All content and materials available on MyNicknameStyler, including but not limited to text, graphics, logos, button icons, images, audio clips, digital downloads, data compilations, and software, are the property of MyNicknameStyler or its content suppliers and are protected by Indian and international copyright, trademark, and other intellectual property laws. The compilation of all content on this Website is the exclusive property of MyNicknameStyler. <mark>Unauthorized reproduction, distribution, or display is strictly prohibited.</mark></p>
+      </div>
+    </div>
+    <div class="term-card">
+      <div class="term-header"><div class="term-number">7</div><div class="term-title">Third‑Party Links & Ads</div><div class="term-icon"><i class="fas fa-link"></i></div></div>
+      <div class="term-content">
+        <p>MyNicknameStyler may contain links to third‑party websites, advertisements, or services that are not owned or controlled by us. We have no control over, and assume no responsibility for, the content, privacy policies, or practices of any third‑party sites or services. You acknowledge and agree that MyNicknameStyler shall not be liable for any damage or loss caused by your use of any third‑party content, goods, or services. We encourage you to read the terms and privacy policies of any third‑party site you visit.</p>
+      </div>
+    </div>
+    <div class="term-card">
+      <div class="term-header"><div class="term-number">8</div><div class="term-title">Disclaimer of Warranties</div><div class="term-icon"><i class="fas fa-exclamation-triangle"></i></div></div>
+      <div class="term-content">
+        <p>THE WEBSITE AND ALL SERVICES ARE PROVIDED ON AN <strong class="highlight">"AS IS" AND "AS AVAILABLE" BASIS</strong> WITHOUT ANY WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED. TO THE FULLEST EXTENT PERMITTED BY LAW, MYNICKNAMESTYLER DISCLAIMS ALL WARRANTIES, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON‑INFRINGEMENT, ACCURACY, RELIABILITY, AND SECURITY. We do not warrant that the Website will be uninterrupted, error‑free, or free of viruses or other harmful components.</p>
+      </div>
+    </div>
+    <div class="term-card">
+      <div class="term-header"><div class="term-number">9</div><div class="term-title">Limitation of Liability</div><div class="term-icon"><i class="fas fa-shield-virus"></i></div></div>
+      <div class="term-content">
+        <p>IN NO EVENT SHALL MYNICKNAMESTYLER, ITS OWNERS, AFFILIATES, OR LICENSORS BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING LOSS OF PROFITS, DATA, USE, GOODWILL, OR OTHER INTANGIBLE LOSSES, ARISING OUT OF YOUR ACCESS TO OR USE OF THE WEBSITE. OUR TOTAL LIABILITY TO YOU FOR ANY CLAIMS ARISING FROM THESE TERMS SHALL NOT EXCEED THE AMOUNT YOU PAID US (IF ANY) IN THE TWELVE MONTHS PRECEDING THE CLAIM.</p>
+        <p>Some jurisdictions do not allow the exclusion of certain warranties or limitation of liability, so the above limitations may not apply to you.</p>
+      </div>
+    </div>
+    <div class="term-card">
+      <div class="term-header"><div class="term-number">10</div><div class="term-title">Indemnification</div><div class="term-icon"><i class="fas fa-handshake"></i></div></div>
+      <div class="term-content">
+        <p>You agree to indemnify, defend, and hold harmless MyNicknameStyler, its officers, directors, employees, agents, and affiliates from and against any claims, liabilities, damages, losses, and expenses, including reasonable attorneys' fees, arising out of or in any way connected with (a) your access to or use of the Website; (b) your violation of these Terms; (c) your User Content; or (d) your violation of any third‑party rights or applicable laws.</p>
+      </div>
+    </div>
+    <div class="term-card">
+      <div class="term-header"><div class="term-number">11</div><div class="term-title">Termination & Suspension</div><div class="term-icon"><i class="fas fa-stop-circle"></i></div></div>
+      <div class="term-content">
+        <p>We reserve the right, in our sole discretion, to suspend, restrict, or permanently terminate your access to the Website at any time, with or without cause, and with or without prior notice. Grounds for termination include, but are not limited to, violation of these Terms, suspected fraudulent activity, or any conduct that we deem harmful to other users, the Website, or our business interests. Upon termination, your right to use the Website ceases immediately, and any provisions of these Terms that by their nature should survive termination shall survive.</p>
+      </div>
+    </div>
+    <div class="term-card">
+      <div class="term-header"><div class="term-number">12</div><div class="term-title">Governing Law & Disputes</div><div class="term-icon"><i class="fas fa-gavel"></i></div></div>
+      <div class="term-content">
+        <p>These Terms shall be governed by and construed in accordance with the laws of <strong class="highlight">India</strong>, without regard to conflict of law principles. Any dispute, controversy, or claim arising out of or relating to these Terms or the Website shall first be attempted to be resolved through good‑faith negotiations. If the dispute cannot be resolved amicably within thirty (30) days, it shall be submitted to the exclusive jurisdiction of the competent courts located in <mark>India</mark>.</p>
+      </div>
+    </div>
+    <div class="term-card">
+      <div class="term-header"><div class="term-number">13</div><div class="term-title">Severability</div><div class="term-icon"><i class="fas fa-code-branch"></i></div></div>
+      <div class="term-content">
+        <p>If any provision of these Terms is found to be invalid, illegal, or unenforceable by a court of competent jurisdiction, such provision shall be modified to the minimum extent necessary to make it enforceable, or if not possible, severed from these Terms. The remaining provisions shall continue in full force and effect.</p>
+      </div>
+    </div>
+    <div class="term-card">
+      <div class="term-header"><div class="term-number">14</div><div class="term-title">Entire Agreement</div><div class="term-icon"><i class="fas fa-file-contract"></i></div></div>
+      <div class="term-content">
+        <p>These Terms, together with our Privacy Policy and any other legal notices published on the Website, constitute the <strong class="highlight">entire agreement</strong> between you and MyNicknameStyler concerning the subject matter hereof, and supersede all prior or contemporaneous communications, whether oral or written.</p>
+      </div>
+    </div>
+    <div class="term-card">
+      <div class="term-header"><div class="term-number">15</div><div class="term-title">Contact Information</div><div class="term-icon"><i class="fas fa-envelope"></i></div></div>
+      <div class="term-content">
+        <p>For questions, concerns, or legal inquiries regarding these Terms, please use the official contact form available on the Website at <a href="/contact/" style="color:var(--accent);">mynicknamestyler.in/contact</a>. We do not accept legal notices via social media or other informal channels. <mark>Only communications through the designated contact form will be considered official.</mark></p>
+      </div>
+    </div>
+    <div class="term-card">
+      <div class="term-header"><div class="term-number">16</div><div class="term-title">Updates & Service Changes</div><div class="term-icon"><i class="fas fa-sync-alt"></i></div></div>
+      <div class="term-content">
+        <p>We may, at our sole discretion, update, modify, suspend, or discontinue any aspect of the Website, including features, tools, or content, at any time without prior notice or liability. We encourage you to check this page periodically for changes. Your continued use after any update constitutes acceptance of the revised Terms.</p>
+      </div>
+    </div>
+    <div class="term-card">
+      <div class="term-header"><div class="term-number">17</div><div class="term-title">Miscellaneous Provisions</div><div class="term-icon"><i class="fas fa-ellipsis-h"></i></div></div>
+      <div class="term-content">
+        <p><strong>Waiver:</strong> No waiver of any term shall be deemed a further or continuing waiver.<br>
+        <strong>Assignment:</strong> You may not assign these Terms; we may assign them without restriction.<br>
+        <strong>Force Majeure:</strong> We shall not be liable for delays caused by circumstances beyond our control.<br>
+        <strong>Relationship:</strong> No agency, partnership, or employment relationship is created by these Terms.<br>
+        Section headings are for convenience and do not affect interpretation. By continuing to use MyNicknameStyler, you acknowledge full acceptance of these Terms.</p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- FOOTER — Updated links: Contact -> /contact/ , Privacy Policy -> /privacy-policy/ -->
+<footer id="footerTrigger">
+  <div class="footer-left">
+    <i class="fas fa-copyright"></i>
+    <span>2026 MyNicknameStyler. All rights reserved.</span>
+  </div>
+  <div class="footer-right">
+    <a href="https://mynicknamestyler.in" target="_blank"><i class="fas fa-globe"></i> mynicknamestyler.in</a>
+    <a href="/contact/"><i class="fas fa-envelope"></i> Contact</a>
+    <a href="/privacy-policy/"><i class="fas fa-lock"></i> Privacy Policy</a>
+    <span style="opacity:0.7;"><i class="fas fa-gavel"></i> Indian Law</span>
+  </div>
+</footer>
+
+</body>
+</html>
