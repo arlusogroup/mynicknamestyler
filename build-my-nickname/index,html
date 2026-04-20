@@ -1,1 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Build My Custom Nickname | MyNicknameStyler</title>
+<meta name="description" content="Build your own custom stylish nickname character by character. Pick from 500+ fancy fonts, symbols, clan tags and numbers. Copy & paste instantly for Free Fire, PUBG, Instagram.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.mynicknamestyler.com/nickname-styler/">
+<meta property="og:title" content="Build My Custom Nickname | MyNicknameStyler">
+<meta property="og:description" content="Build your own custom stylish nickname character by character. 500+ styles. Free.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.mynicknamestyler.com/nickname-styler/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "MyNicknameStyler — Custom Nickname Builder",
+  "url": "https://www.mynicknamestyler.com/nickname-styler/",
+  "description": "Build a custom stylish nickname character by character using 500+ Unicode fonts, symbols, and clan tags. Works for Free Fire, PUBG, BGMI, Instagram.",
+  "applicationCategory": "Utility",
+  "operatingSystem": "All",
+  "featureList": ["500+ Unicode character styles","Character-by-character building","One-click copy & paste","Free Fire compatible","PUBG Mobile compatible","Game limit counter","No sign-up required"],
+  "offers": {"@type":"Offer","price":"0","priceCurrency":"USD"},
+  "author": {"@type":"Organization","name":"MyNicknameStyler","url":"https://www.mynicknamestyler.com"}
+}
+</script>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0f172a;
+  --navy2:#1e293b;
+  --orange:#f97316;
+  --orange-h:#ea580c;
+  --border:#e2e8f0;
+  --bg:#f8fafc;
+  --white:#ffffff;
+  --text:#0f172a;
+  --muted:#64748b;
+  --shadow-sm:0 1px 2px 0 rgb(0 0 0/0.05);
+  --shadow-md:0 4px 6px -1px rgb(0 0 0/0.1),0 2px 4px -2px rgb(0 0 0/0.1);
+  --gradient-orange:linear-gradient(135deg,#f97316,#facc15);
+  --header-gradient:linear-gradient(145deg,#0b1120 0%,#1e293b 100%);
+  --grid-bg:linear-gradient(145deg,#fafcff 0%,#f1f5f9 100%);
+}
+
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#0a0f1e;--white:#111827;--text:#f1f5f9;--muted:#94a3b8;
+    --border:#1e293b;--navy2:#0f172a;
+    --grid-bg:linear-gradient(145deg,#111827 0%,#0f172a 100%);
+  }
+  .cat-btn{background:var(--white);color:var(--text);border-color:#334155}
+  .input-bar{background:var(--white);border-color:#334155}
+  #mainInput{color:var(--text)}
+  .ch{background:#1e293b;color:#e2e8f0;border-color:#334155}
+  .ch:hover{background:#0f172a}
+  .grid-section-label{color:#fb923c}
+  .faq-item{background:#111827;border-color:#1e293b}
+  .faq-question{background:#111827;color:#f1f5f9}
+  .faq-question:hover{background:#1a2236}
+  .faq-answer{background:#0f1829}
+  .faq-answer-inner{color:#cbd5e1}
+  .feature-card{background:#111827;border-color:#1e293b}
+  .feature-card h4{color:#f1f5f9}
+  footer{background:#111827;border-top-color:#1e293b}
+  .footer-site-name{color:#f1f5f9}
+  .footer-col a{color:#cbd5e1}
+  .char-counter-wrap{background:#111827;border-color:#1e293b}
+  .load-more{border-color:#334155;color:var(--muted)}
+  .seo-hero h1{background:linear-gradient(135deg,#f1f5f9,var(--orange));background-clip:text;-webkit-background-clip:text}
+  .seo-content h2{background:linear-gradient(135deg,#f1f5f9,var(--orange));background-clip:text;-webkit-background-clip:text}
+  .how-step{background:#111827;border-color:#1e293b}
+  .how-step h3{color:#f1f5f9}
+}
+
+body{
+  font-family:'Nunito',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column;
+}
+
+/* ── NAV ── */
+nav{
+  background:var(--header-gradient);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 24px;height:70px;
+  position:sticky;top:0;z-index:100;
+  box-shadow:var(--shadow-md),0 0 0 1px rgba(249,115,22,0.2);
+  border-bottom:1px solid rgba(249,115,22,0.3);
+}
+@media(max-width:768px){nav{padding:0 16px;height:60px}}
+
+.nav-left{flex:1;display:flex;align-items:center;gap:10px}
+.nav-logo{width:44px;height:44px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.nav-logo svg{width:44px;height:44px;display:block}
+@media(max-width:768px){.nav-logo{width:36px;height:36px}.nav-logo svg{width:36px;height:36px}}
+.ring-outer{fill:none;stroke:#fff;stroke-width:2.5}
+.n-path{fill:none;stroke:#fff;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.spark{fill:var(--orange)}
+
+/* Brand — center */
+.nav-center{flex:1;display:flex;justify-content:center;align-items:center}
+.nav-brand{
+  font-size:22px;font-weight:900;white-space:nowrap;
+  background:linear-gradient(135deg,#fff,#e2e8f0);
+  background-clip:text;-webkit-background-clip:text;color:transparent;
+  display:inline-flex;align-items:center;gap:0;
+}
+.nav-brand .hi{background:linear-gradient(135deg,var(--orange),#facc15);background-clip:text;-webkit-background-clip:text;color:transparent}
+.typing-cursor{
+  display:inline-block;width:2px;height:1.1em;background:var(--orange);
+  margin-left:2px;vertical-align:middle;border-radius:2px;
+  animation:blink 1s step-end infinite;
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+@media(max-width:480px){.nav-brand{font-size:16px}}
+
+/* Desktop nav links — left side */
+.nav-links{display:flex;align-items:center;gap:2px;margin-left:6px}
+.nav-links a{
+  color:rgba(255,255,255,0.7);text-decoration:none;font-size:13px;font-weight:700;
+  padding:6px 11px;border-radius:20px;transition:all .2s;white-space:nowrap;
+}
+.nav-links a:hover{color:#fff;background:rgba(255,255,255,0.1)}
+.nav-links a.active{color:var(--orange)}
+@media(max-width:960px){.nav-links{display:none}}
+
+.nav-right{flex:1;display:flex;justify-content:flex-end;align-items:center;gap:8px}
+
+/* Hamburger — always visible */
+.hamburger{
+  background:rgba(255,255,255,0.08);border:none;cursor:pointer;
+  padding:9px 11px;border-radius:10px;
+  display:flex;flex-direction:column;gap:5px;transition:background .2s;
+}
+.hamburger span{width:22px;height:2px;background:white;border-radius:4px;display:block;transition:all .3s}
+.hamburger:hover{background:rgba(255,255,255,0.15)}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* Dropdown */
+.dropdown-menu{
+  display:none;position:absolute;top:70px;left:0;right:0;
+  background:rgba(11,17,32,0.98);backdrop-filter:blur(16px);
+  flex-direction:column;padding:12px 20px 20px;gap:4px;z-index:999;
+  border-bottom:1px solid rgba(249,115,22,0.25);
+  box-shadow:0 16px 32px rgba(0,0,0,0.3);
+}
+@media(max-width:768px){.dropdown-menu{top:60px;padding:10px 16px 16px}}
+.dropdown-menu.open{display:flex;animation:slideDown .22s ease}
+@keyframes slideDown{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+
+.drop-section-label{
+  font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.1em;
+  color:rgba(249,115,22,0.7);padding:12px 16px 4px;
+}
+.dropdown-menu a{
+  color:rgba(255,255,255,0.85);text-decoration:none;font-size:15px;font-weight:700;
+  padding:9px 16px;border-radius:12px;display:flex;align-items:center;gap:12px;transition:all .18s;
+}
+.dropdown-menu a:hover{background:rgba(249,115,22,0.15);color:#fff;transform:translateX(4px)}
+.dropdown-menu a.active{background:linear-gradient(135deg,var(--orange),var(--orange-h));color:#fff}
+.dropdown-menu a .mi{width:20px;text-align:center;font-size:14px;flex-shrink:0}
+
+/* ── MAIN ── */
+.page{max-width:1200px;margin:0 auto;padding:28px 20px;flex:1;width:100%}
+@media(max-width:768px){.page{padding:20px 14px}}
+
+/* Hero */
+.seo-hero{text-align:center;margin-bottom:24px}
+.seo-hero h1{
+  font-size:1.75rem;font-weight:900;line-height:1.15;margin-bottom:10px;
+  background:linear-gradient(135deg,var(--navy),var(--orange));
+  background-clip:text;-webkit-background-clip:text;color:transparent;
+}
+@media(max-width:600px){.seo-hero h1{font-size:1.35rem}}
+.seo-hero p{font-size:.95rem;color:var(--muted);max-width:640px;margin:0 auto;line-height:1.6}
+
+/* Category tabs */
+.category-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;justify-content:center}
+.cat-btn{
+  background:var(--white);border:2px solid var(--border);padding:6px 18px;
+  border-radius:40px;font-size:14px;font-weight:800;cursor:pointer;
+  transition:all .18s;font-family:inherit;color:var(--text);
+}
+.cat-btn:hover{border-color:var(--orange);transform:translateY(-2px)}
+.cat-btn.active{background:var(--orange);border-color:var(--orange);color:white}
+
+/* Input bar */
+.input-bar{
+  display:flex;align-items:center;background:var(--white);
+  border:2px solid var(--border);border-radius:50px;overflow:hidden;
+  margin-bottom:10px;transition:border-color .2s;
+}
+.input-bar:focus-within{border-color:var(--orange)}
+#mainInput{
+  flex:1;border:none;outline:none;padding:14px 20px;
+  font-size:17px;font-weight:700;font-family:'Nunito',sans-serif;
+  background:transparent;color:var(--text);
+}
+.btn-clear{background:transparent;border:none;cursor:pointer;color:var(--muted);padding:0 14px;font-size:20px;font-family:inherit;transition:color .2s}
+.btn-clear:hover{color:var(--orange)}
+.btn-copy{
+  background:var(--orange);color:white;border:none;cursor:pointer;
+  padding:0 26px;height:52px;font-size:14px;font-weight:800;
+  font-family:inherit;border-radius:0 48px 48px 0;transition:all .2s;
+}
+.btn-copy:hover{background:var(--orange-h)}
+.btn-copy:active{transform:scale(0.97)}
+.btn-copy.copied{background:#16a34a}
+
+/* Character counter */
+.char-counter-wrap{
+  display:flex;gap:16px;justify-content:center;flex-wrap:wrap;
+  margin-bottom:16px;padding:7px 18px;
+  background:var(--white);border:1px solid var(--border);
+  border-radius:30px;width:fit-content;margin-left:auto;margin-right:auto;
+}
+.lim{font-size:12px;font-weight:700;display:flex;align-items:center;gap:6px}
+.lim-dot{width:8px;height:8px;border-radius:50%;background:#22c55e;flex-shrink:0;transition:background .3s}
+.lim-dot.warn{background:#f59e0b}
+.lim-dot.over{background:#ef4444}
+.lim-label{color:var(--muted)}
+.lim-val{color:var(--text);font-weight:900}
+
+/* Grid */
+.grid-wrap{
+  background:var(--grid-bg);
+  border:1px solid rgba(249,115,22,0.2);
+  border-radius:24px;
+  padding:16px 14px;
+  margin-bottom:36px;
+  box-shadow:inset 0 2px 8px rgba(0,0,0,0.02),var(--shadow-sm);
+}
+.grid-section-label{
+  display:block;width:100%;
+  font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.08em;
+  color:var(--orange);margin:10px 2px 7px;
+}
+.char-grid{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:6px;justify-content:flex-start}
+.ch{
+  min-width:44px;min-height:44px;
+  display:flex;align-items:center;justify-content:center;
+  padding:6px 8px;font-size:20px;
+  background:var(--white);border:1.5px solid var(--border);
+  border-radius:13px;cursor:pointer;
+  transition:background .12s,border-color .12s,transform .1s;
+  color:#1e293b;white-space:nowrap;line-height:1.2;
+}
+@media(prefers-color-scheme:dark){.ch{color:#e2e8f0}}
+@media(max-width:600px){.ch{min-width:38px;min-height:38px;font-size:17px;padding:5px 6px;border-radius:10px}}
+.ch:hover{background:var(--navy);color:#fff;border-color:var(--navy);transform:scale(1.08)}
+.ch:active{transform:scale(0.95)}
+.ch.flash{background:var(--orange);color:#fff;border-color:var(--orange)}
+
+.load-more{
+  width:100%;margin-top:10px;padding:9px;border-radius:12px;
+  background:transparent;border:2px dashed var(--border);cursor:pointer;
+  font-size:13px;font-weight:800;color:var(--muted);font-family:inherit;transition:all .2s;
+}
+.load-more:hover{border-color:var(--orange);color:var(--orange)}
+
+/* How-to steps */
+.how-to{margin-bottom:32px}
+.how-to h2{
+  font-size:1.35rem;font-weight:900;text-align:center;margin-bottom:14px;
+  background:linear-gradient(135deg,var(--navy),var(--orange));
+  background-clip:text;-webkit-background-clip:text;color:transparent;
+}
+.how-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+.how-step{
+  background:var(--white);border:1px solid var(--border);border-radius:18px;
+  padding:18px 14px;text-align:center;
+}
+.how-num{
+  width:38px;height:38px;border-radius:50%;background:var(--orange);
+  color:#fff;font-size:17px;font-weight:900;
+  display:flex;align-items:center;justify-content:center;margin:0 auto 10px;
+}
+.how-step h3{font-size:13px;font-weight:800;margin-bottom:5px;color:var(--text)}
+.how-step p{font-size:12px;color:var(--muted);line-height:1.5}
+
+/* SEO content */
+.seo-content{margin-top:32px;border-top:1px solid var(--border);padding-top:32px}
+.seo-content h2{
+  font-size:1.5rem;font-weight:800;margin-bottom:10px;text-align:center;
+  background:linear-gradient(135deg,var(--navy),var(--orange));
+  background-clip:text;-webkit-background-clip:text;color:transparent;
+}
+.section-sub{text-align:center;color:var(--muted);margin-bottom:24px;font-size:.9rem}
+.features-grid{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;margin:24px 0 36px}
+.feature-card{
+  background:var(--white);border-radius:20px;padding:22px 14px;
+  flex:1;min-width:150px;max-width:200px;text-align:center;
+  border:1px solid rgba(0,0,0,0.05);box-shadow:var(--shadow-sm);
+  transition:transform .25s,box-shadow .25s;
+}
+.feature-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+.feature-card i{
+  font-size:2rem;background:var(--gradient-orange);
+  background-clip:text;-webkit-background-clip:text;color:transparent;
+  margin-bottom:10px;display:inline-block;
+}
+.feature-card h4{font-size:1rem;font-weight:800;margin-bottom:6px;color:var(--text)}
+.feature-card p{font-size:.78rem;color:var(--muted)}
+
+/* FAQ */
+.faq-container{max-width:860px;margin:24px auto 0;display:flex;flex-direction:column;gap:10px}
+.faq-item{background:var(--white);border-radius:18px;border:1px solid var(--border);overflow:hidden}
+.faq-question{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:15px 20px;cursor:pointer;font-weight:800;font-size:.95rem;
+  color:var(--navy);background:var(--white);transition:background .2s;
+}
+@media(prefers-color-scheme:dark){.faq-question{color:#f1f5f9}}
+.faq-question:hover{background:#fef7f0}
+.faq-question .fq-icon{color:var(--orange);margin-right:10px;font-size:1.1rem;width:22px;flex-shrink:0}
+.faq-question span{flex:1}
+.faq-question .toggle-icon{font-size:.85rem;color:var(--orange);transition:transform .4s cubic-bezier(.2,.9,.4,1.1)}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.33,1,.68,1);background:#fefcf9;border-top:1px solid transparent}
+.faq-answer-inner{padding:0 20px 16px 52px;color:#334155;line-height:1.6;font-size:.9rem;opacity:0;transform:translateY(-6px);transition:opacity .3s ease .07s,transform .32s ease .05s}
+.faq-item.active .faq-answer{max-height:400px;border-top-color:#f9731618}
+.faq-item.active .faq-answer-inner{opacity:1;transform:translateY(0)}
+.faq-item.active .toggle-icon{transform:rotate(180deg)}
+
+/* Footer */
+footer{background:var(--white);border-top:1px solid var(--border);padding:26px 24px 22px;margin-top:auto}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-top{display:flex;align-items:flex-start;gap:16px;margin-bottom:20px}
+.footer-logo{
+  flex-shrink:0;width:56px;height:56px;
+  background:linear-gradient(145deg,#0f172a,#1e293b);
+  border:2px solid rgba(249,115,22,0.4);border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+}
+.footer-logo svg{width:38px;height:38px;display:block}
+.footer-text{padding-top:4px}
+.footer-site-name{font-size:.95rem;font-weight:900;color:#1e293b;margin-bottom:4px}
+.footer-cookie{font-size:.8rem;color:var(--muted);max-width:480px;line-height:1.5}
+.footer-cookie a{color:#2563eb;text-decoration:underline;font-weight:700}
+.footer-cookie a:hover{color:var(--orange)}
+.footer-links{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:16px;border-top:1px solid var(--border);padding-top:18px;margin-bottom:16px}
+.footer-col h4{font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:8px}
+.footer-col a{display:block;font-size:12px;font-weight:700;color:var(--text);text-decoration:none;margin-bottom:5px;transition:color .2s}
+.footer-col a:hover{color:var(--orange)}
+.footer-bottom{text-align:center;font-size:11px;color:var(--muted);border-top:1px solid var(--border);padding-top:14px}
+
+/* Toast */
+.toast-wrap{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:9999;pointer-events:none}
+.toast{
+  background:var(--navy);color:#fff;padding:11px 22px;border-radius:40px;
+  font-weight:700;font-size:13px;opacity:0;transition:opacity .22s;
+  white-space:nowrap;box-shadow:0 8px 24px rgba(0,0,0,0.25);
+}
+.toast.show{opacity:1}
+.toast.ok{background:#16a34a}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-left">
+    <div class="nav-logo" aria-label="MyNicknameStyler logo">
+      <svg viewBox="0 0 96 96" fill="none" aria-hidden="true">
+        <circle class="ring-outer" cx="48" cy="48" r="44" stroke-linecap="round"/>
+        <polyline class="n-path" points="30,64 30,32 54,64 54,32"/>
+        <line class="n-path" x1="54" y1="32" x2="66" y2="32"/>
+        <circle class="spark" cx="66" cy="47" r="4.5"/>
+      </svg>
+    </div>
+    <nav class="nav-links" aria-label="Primary navigation">
+      <a href="/">Home</a>
+      <a href="/nickname-styler/" class="active">Build Nickname</a>
+      <a href="/pubg-name/">PUBG Name</a>
+      <a href="/free-fire-name/">Free Fire</a>
+      <a href="/bgmi-name/">BGMI</a>
+      <a href="/blog/">Blog</a>
+    </nav>
+  </div>
+
+  <div class="nav-center">
+    <div class="nav-brand" id="navBrand"></div>
+  </div>
+
+  <div class="nav-right">
+    <button class="hamburger" id="ham" aria-label="Toggle menu" aria-expanded="false" aria-controls="dropMenu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="dropdown-menu" id="dropMenu" role="navigation" aria-label="Mobile navigation">
+  <span class="drop-section-label">Main</span>
+  <a href="/"><span class="mi"><i class="fas fa-home" aria-hidden="true"></i></span> Home</a>
+  <a href="/nickname-styler/" class="active"><span class="mi"><i class="fas fa-magic" aria-hidden="true"></i></span> Build My Nickname</a>
+  <a href="/publish-my-nickname/"><span class="mi"><i class="fas fa-share-alt" aria-hidden="true"></i></span> Publish My Nickname</a>
+  <a href="/ranking/"><span class="mi"><i class="fas fa-trophy" aria-hidden="true"></i></span> Ranking</a>
+  <span class="drop-section-label">Game Generators</span>
+  <a href="/pubg-name/"><span class="mi"><i class="fas fa-crosshairs" aria-hidden="true"></i></span> PUBG Name Generator</a>
+  <a href="/free-fire-name/"><span class="mi"><i class="fas fa-fire" aria-hidden="true"></i></span> Free Fire Name</a>
+  <a href="/bgmi-name/"><span class="mi"><i class="fas fa-shield-alt" aria-hidden="true"></i></span> BGMI Name</a>
+  <span class="drop-section-label">More</span>
+  <a href="/blog/"><span class="mi"><i class="fas fa-blog" aria-hidden="true"></i></span> Blog</a>
+  <a href="/contact/"><span class="mi"><i class="fas fa-envelope" aria-hidden="true"></i></span> Contact</a>
+</div>
+
+<div class="page">
+
+  <div class="seo-hero">
+    <h1>Build Your Custom Stylish Nickname</h1>
+    <p>Click any character below to build your nickname letter by letter. Mix fonts, add symbols and clan tags — then copy &amp; paste into Free Fire, PUBG, BGMI or Instagram.</p>
+  </div>
+
+  <!-- Category tabs -->
+  <div class="category-tabs" role="tablist" aria-label="Character categories">
+    <button class="cat-btn active" data-cat="all" role="tab" aria-selected="true">All</button>
+    <button class="cat-btn" data-cat="alphabet" role="tab" aria-selected="false">Alphabet</button>
+    <button class="cat-btn" data-cat="numbers" role="tab" aria-selected="false">Numbers</button>
+    <button class="cat-btn" data-cat="symbols" role="tab" aria-selected="false">Symbols</button>
+    <button class="cat-btn" data-cat="tag" role="tab" aria-selected="false">Tags</button>
+  </div>
+
+  <!-- Input bar -->
+  <div class="input-bar">
+    <input id="mainInput" type="text" placeholder="Type or click characters to build your nickname…" autocomplete="off" spellcheck="false" aria-label="Nickname input field">
+    <button class="btn-clear" id="clearBtn" aria-label="Clear nickname">✕</button>
+    <button class="btn-copy" id="copyBtn" aria-label="Copy nickname to clipboard">Copy</button>
+  </div>
+
+  <!-- Character counter -->
+  <div class="char-counter-wrap" aria-live="polite">
+    <div class="lim"><div class="lim-dot" id="d-ff"></div><span class="lim-label">Free Fire:</span><span class="lim-val" id="c-ff">0/20</span></div>
+    <div class="lim"><div class="lim-dot" id="d-pb"></div><span class="lim-label">PUBG:</span><span class="lim-val" id="c-pb">0/16</span></div>
+    <div class="lim"><div class="lim-dot" id="d-ig"></div><span class="lim-label">Instagram:</span><span class="lim-val" id="c-ig">0/30</span></div>
+  </div>
+
+  <!-- Grid -->
+  <div class="grid-wrap" role="region" aria-label="Character selection grid">
+    <div id="gridContainer"></div>
+  </div>
+
+  <!-- How to use -->
+  <section class="how-to" aria-labelledby="howHeading">
+    <h2 id="howHeading">How to Build Your Custom Nickname</h2>
+    <div class="how-steps">
+      <div class="how-step">
+        <div class="how-num" aria-hidden="true">1</div>
+        <h3>Type or Click</h3>
+        <p>Type your name directly OR click any character from the grid to add it one by one.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-num" aria-hidden="true">2</div>
+        <h3>Mix &amp; Match</h3>
+        <p>Combine different font styles — script, double-struck, ancient, symbols — to create a unique look.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-num" aria-hidden="true">3</div>
+        <h3>Copy &amp; Paste</h3>
+        <p>Hit Copy and paste your custom nickname into Free Fire, PUBG, BGMI, Instagram, or WhatsApp.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEO Content -->
+  <div class="seo-content">
+    <h2>Why Build a Custom Nickname?</h2>
+    <div class="section-sub">Character-by-character control — make a nickname that is truly yours</div>
+    <div class="features-grid">
+      <div class="feature-card"><i class="fas fa-pen-fancy" aria-hidden="true"></i><h4>Full Control</h4><p>Build letter by letter — mix any style you want</p></div>
+      <div class="feature-card"><i class="fas fa-gamepad" aria-hidden="true"></i><h4>Game Ready</h4><p>Works in Free Fire, PUBG, BGMI, Call of Duty</p></div>
+      <div class="feature-card"><i class="fas fa-tachometer-alt" aria-hidden="true"></i><h4>Live Limits</h4><p>See Free Fire (20) &amp; PUBG (16) character limits live</p></div>
+      <div class="feature-card"><i class="fas fa-gem" aria-hidden="true"></i><h4>500+ Styles</h4><p>Script, double-struck, ancient, circled &amp; more</p></div>
+      <div class="feature-card"><i class="fas fa-copy" aria-hidden="true"></i><h4>One-Click Copy</h4><p>Copy and paste anywhere instantly</p></div>
+      <div class="feature-card"><i class="fas fa-lock-open" aria-hidden="true"></i><h4>Always Free</h4><p>No sign-up, no limits, no payment</p></div>
+    </div>
+
+    <h2>Frequently Asked Questions</h2>
+    <div class="section-sub">How to build custom nicknames for Free Fire, PUBG, BGMI &amp; Instagram</div>
+    <div class="faq-container">
+      <div class="faq-item">
+        <div class="faq-question"><i class="fas fa-question-circle fq-icon" aria-hidden="true"></i><span>How do I build a custom stylish nickname?</span><i class="fas fa-chevron-down toggle-icon" aria-hidden="true"></i></div>
+        <div class="faq-answer"><div class="faq-answer-inner">Use the input box to type your nickname, then click characters from the grid to add stylish letters one by one. Mix different font styles — for example, start with a clan tag from the Tags category, then add your name in Script or Double-Struck style. Once done, click Copy and paste it into your game or social profile.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question"><i class="fas fa-question-circle fq-icon" aria-hidden="true"></i><span>How to create stylish name for Free Fire?</span><i class="fas fa-chevron-down toggle-icon" aria-hidden="true"></i></div>
+        <div class="faq-answer"><div class="faq-answer-inner">Build your Free Fire stylish name using our character builder — keep it under 20 characters (our counter shows the Free Fire limit in real time). Click characters from Alphabet, Symbols, or Tags categories. Copy your custom name and paste it in Free Fire → Profile → Name Change option.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question"><i class="fas fa-question-circle fq-icon" aria-hidden="true"></i><span>What is the character limit for PUBG Mobile names?</span><i class="fas fa-chevron-down toggle-icon" aria-hidden="true"></i></div>
+        <div class="faq-answer"><div class="faq-answer-inner">PUBG Mobile allows up to 16 characters. Our live counter shows your current PUBG character count and turns amber when you are near the limit and red when over. Keep your stylish PUBG name between 8–14 characters so symbols fit nicely in the lobby and kill feed.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question"><i class="fas fa-question-circle fq-icon" aria-hidden="true"></i><span>Which character styles work in Free Fire and PUBG?</span><i class="fas fa-chevron-down toggle-icon" aria-hidden="true"></i></div>
+        <div class="faq-answer"><div class="faq-answer-inner">Most Unicode characters in our Alphabet, Numbers, and Symbols tabs work in both games. This includes Script letters (𝒶𝒷𝒸), Double-Struck (𝔸𝔹ℂ), Circled letters (ⒶⒷⒸ), and Decorative symbols. Wide Stylized characters (卂乃匚) work in Free Fire. Test by pasting in the rename screen before confirming — especially for clan tags.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question"><i class="fas fa-question-circle fq-icon" aria-hidden="true"></i><span>Can I use these custom nicknames on Instagram?</span><i class="fas fa-chevron-down toggle-icon" aria-hidden="true"></i></div>
+        <div class="faq-answer"><div class="faq-answer-inner">Yes! Instagram fully supports all Unicode characters. You can paste your custom stylish nickname into your Instagram profile name or bio (up to 30 characters for name). Script and Double-Struck styles look especially great on Instagram profiles.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question"><i class="fas fa-question-circle fq-icon" aria-hidden="true"></i><span>How to change name in Free Fire for free?</span><i class="fas fa-chevron-down toggle-icon" aria-hidden="true"></i></div>
+        <div class="faq-answer"><div class="faq-answer-inner">New Free Fire accounts get one free name change. After that it costs 390 diamonds. Build your perfect custom name here before spending diamonds. To change: open Free Fire → tap your profile icon → tap the pencil icon next to your name → paste your new stylish nickname → confirm.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-logo">
+        <svg viewBox="0 0 96 96" fill="none" aria-hidden="true">
+          <circle cx="48" cy="48" r="42" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <polyline points="28,66 28,30 54,66 54,30" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="54" y1="30" x2="68" y2="30" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="68" cy="46" r="5.5" fill="#f97316"/>
+        </svg>
+      </div>
+      <div class="footer-text">
+        <div class="footer-site-name">MyNicknameStyler.com</div>
+        <div class="footer-cookie">We use cookies. By using this site you agree to the <a href="/terms-and-conditions/">Terms of Use</a> and <a href="/privacy-policy/">Privacy Policy</a>.</div>
+      </div>
+    </div>
+    <div class="footer-links">
+      <div class="footer-col">
+        <h4>Build</h4>
+        <a href="/nickname-styler/">Custom Nickname Builder</a>
+        <a href="/publish-my-nickname/">Publish My Nickname</a>
+        <a href="/ranking/">Top Nicknames</a>
+        <a href="/blog/">Blog</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="/about/">About</a>
+        <a href="/contact/">Contact</a>
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2025–2026 MyNicknameStyler.com — Custom Nickname Builder for Free Fire, PUBG, BGMI &amp; Instagram</div>
+  </div>
+</footer>
+
+<div class="toast-wrap"><div class="toast" id="toast" role="status" aria-live="polite"></div></div>
+
+<script>
+// ── CHARACTER DATA ──
+const alphabetSections=[
+  {label:"Normal Letters",chars:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"},
+  {label:"Stylized  ᗩßᑕ",chars:"ᗩßᑕᗪΣᖴǤᕼÏᒎᛕᒪᗰＮᗝᑭɊᖇŞƬᑌᐯᗯ᙭ƳƵ"},
+  {label:"Script / Cursive  𝒶𝒷𝒸",chars:"𝒶𝒷𝒸𝒹𝑒𝒻𝑔𝒽𝒾𝒿𝓀𝓁𝓂𝓃𝑜𝓅𝓆𝓇𝓈𝓉𝓊𝓋𝓌𝓍𝓎𝓏"},
+  {label:"Double-Struck  𝔸𝔹ℂ",chars:"𝔸𝔹ℂ𝔻𝔼𝔽𝔾ℍ𝕀𝕁𝕂𝕃𝕄ℕ𝕆ℙℚℝ𝕊𝕋𝕌𝕍𝕎𝕏𝕐ℤ𝕒𝕓𝕔𝕕𝕖𝕗𝕘𝕙𝕚𝕛𝕜𝕝𝕞𝕟𝕠𝕡𝕢𝕣𝕤𝕥𝕦𝕧𝕨𝕩𝕪𝕫"},
+  {label:"Wide Stylized  卂乃匚 — Free Fire",chars:"卂乃匚刀乇ﾁム卄工ﾌ⻓ㄥ爪几口尺匕ᐯ山乂ㄚ乙"},
+  {label:"Ancient",chars:"𐌀𐌁𐌂𐌃𐌄𐌅ᚺ𐌆𐌇𐌊𐌋𐌑ᛗ𐌒𐌔𐌕𐌖𐌗"},
+  {label:"New Stylized  ꍏꌃꉓ",chars:"ꍏꌃꉓꀸꍟꎇꁅꃅꀤꀭꀘ꒒ꎭꂦᖘꆰꋪꌗ꓄ꀎᐯꅏꊼꌩꁴ"},
+  {label:"Circled  ⒶⒷⒸ",chars:"ⒶⒷⒸⒹⒺⒻⒼⒽⒾⒿⓀⓁⓂⓃⓄⓅⓆⓇⓈⓉⓊⓋⓌⓍⓎⓏⓐⓑⓒⓓⓔⓕⓖⓗⓘⓙⓚⓛⓜⓝⓞⓟⓠⓡⓢⓣⓤⓥⓦⓧⓨⓩ"}
+];
+const numberSections=[
+  {label:"Normal  0–9",chars:"0123456789"},
+  {label:"Double-Struck  𝟙𝟚𝟛",chars:"𝟙𝟚𝟛𝟜𝟝𝟞𝟟𝟠𝟡"},
+  {label:"Circled  ❶❷❸",chars:"❶❷❸❹❺❻❼❽❾❿"},
+  {label:"Parenthesized  ➀➁➂",chars:"➀➁➂➃➄➅➆➇➈➉"}
+];
+const symbolsArray=["㉿","㋦","㉺","⟁","≋","⑉","𖤓","⁜","‽","⊛","√","∞","∂","⊕","©","¤","⍟","⍣","☒","☓","⌕","⌁","༄ᶦᶰᵈ᭄✿","❚█══█❚","♥‿♥","❀◕ ‿ ◕❀","（╹ェ╹）","▄︻̷̿┻̿═━一","乂❤‿❤乂","ᕕ( ͡° ͜ʖ ͡°)","(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧","[̲̅$̲̅(̲̅1̲̅)̲̅$̲̅]"];
+const clanTags=["【¥Ŧ】","⫷♔ツ⫸","〖ITZ〗","ᗯᗩᖇᗪ♜","〘丅ℝᎶ〙","ƬIGΛRຮ","〖ƝƁƘ〗","♔〘Ł€Ꮆ€ŇĐ〙♔","〖ᗩℱᎶ〗","₭ΘĐ ♛","ƵŦ✿","★Ꭾ☯Ꮭ☯★","ƬψƬ ☢","『ŤҜ』","tєค๓","ᴿᵉˢᵖᵉᶜᵗ","ᴸᴵᶠᴱ","ᴳᵒᵈ","乃丹刀™","𝔰𝔲𝔭𝔢𝔯","ᶠᴬᴷᴱ","⏤͟͟͞͞★","ᴿᴼᵞᴬᴸ","꧁༒꧂","꧁ᶜᴿᴬᶻʸ꧂"];
+const flags=["🇮🇩","🇮🇳","🇰🇷","🇲🇽","🇲🇾","🇵🇭","🇷🇺","🇸🇦","🇸🇬","🇦🇪","🇦🇺","🇧🇷","🇨🇦","🇨🇳","🇩🇪","🇪🇸","🇫🇷","🇬🇧","🇺🇸","🇯🇵"];
+
+// flat list for "All" tab
+const allFlat=[];
+for(const s of alphabetSections)for(const c of s.chars)allFlat.push(c);
+for(const s of numberSections)for(const c of s.chars)allFlat.push(c);
+for(const x of symbolsArray)allFlat.push(x);
+for(const x of clanTags)allFlat.push(x);
+for(const x of flags)allFlat.push(x);
+
+const BATCH=150;
+let currentCat='all',offset=0;
+
+function cell(ch){
+  const d=document.createElement('div');
+  d.className='ch';d.textContent=ch;
+  const l=ch.length;
+  if(l>6)d.style.fontSize='13px';
+  else if(l>3)d.style.fontSize='15px';
+  d.addEventListener('click',e=>{e.preventDefault();addChar(ch,d)});
+  return d;
+}
+function label(txt){
+  const s=document.createElement('span');
+  s.className='grid-section-label';s.textContent=txt;return s;
+}
+function row(chars){
+  const r=document.createElement('div');r.className='char-grid';
+  for(const c of chars)r.appendChild(cell(c));
+  return r;
+}
+
+function renderGrid(){
+  const c=document.getElementById('gridContainer');c.innerHTML='';
+  if(currentCat==='alphabet'){
+    for(const s of alphabetSections){c.appendChild(label(s.label));c.appendChild(row(s.chars));} return;
+  }
+  if(currentCat==='numbers'){
+    for(const s of numberSections){c.appendChild(label(s.label));c.appendChild(row(s.chars));} return;
+  }
+  if(currentCat==='symbols'){
+    c.appendChild(label('Symbols & Emoticons'));c.appendChild(row(symbolsArray));return;
+  }
+  if(currentCat==='tag'){
+    c.appendChild(label('Clan Tags'));c.appendChild(row(clanTags));
+    c.appendChild(label('Country Flag Emojis'));c.appendChild(row(flags));return;
+  }
+  // All — paginated
+  c.appendChild(label('All Characters'));
+  const slice=allFlat.slice(0,offset+BATCH);
+  c.appendChild(row(slice));
+  if(offset+BATCH<allFlat.length){
+    const btn=document.createElement('button');
+    btn.className='load-more';
+    btn.textContent='Load more ('+(allFlat.length-offset-BATCH)+' remaining)';
+    btn.onclick=()=>{offset+=BATCH;renderGrid()};
+    c.appendChild(btn);
+  }
+}
+
+function setTab(cat){
+  currentCat=cat;offset=0;
+  document.querySelectorAll('.cat-btn').forEach(b=>{
+    const on=b.dataset.cat===cat;
+    b.classList.toggle('active',on);
+    b.setAttribute('aria-selected',on);
+  });
+  renderGrid();
+}
+
+function addChar(ch,el){
+  const inp=document.getElementById('mainInput');
+  inp.value+=ch;
+  inp.focus({preventScroll:true});
+  el.classList.add('flash');
+  setTimeout(()=>el.classList.remove('flash'),140);
+  updateCounters();
+}
+
+function updateCounters(){
+  const v=document.getElementById('mainInput').value;
+  const n=[...v].length;
+  function set(dotId,valId,lim){
+    document.getElementById(valId).textContent=n+'/'+lim;
+    const d=document.getElementById(dotId);
+    d.className='lim-dot'+(n>lim?' over':n>lim*.8?' warn':'');
+  }
+  set('d-ff','c-ff',20);
+  set('d-pb','c-pb',16);
+  set('d-ig','c-ig',30);
+}
+
+function copyNick(){
+  const v=document.getElementById('mainInput').value;
+  if(!v){toast('Nothing to copy yet!',false);return;}
+  const btn=document.getElementById('copyBtn');
+  const write=navigator.clipboard?navigator.clipboard.writeText(v):Promise.reject();
+  write.catch(()=>{
+    const t=document.createElement('textarea');
+    t.value=v;t.style.cssText='position:fixed;opacity:0';
+    document.body.appendChild(t);t.select();
+    try{document.execCommand('copy')}catch(e){}
+    document.body.removeChild(t);
+  }).finally(()=>{
+    btn.textContent='✓ Copied!';btn.classList.add('copied');
+    toast('Copied to clipboard!',true);
+    setTimeout(()=>{btn.textContent='Copy';btn.classList.remove('copied')},2000);
+  });
+}
+
+function clearNick(){
+  document.getElementById('mainInput').value='';
+  updateCounters();
+  document.getElementById('mainInput').focus({preventScroll:true});
+  toast('Cleared');
+}
+
+let toastTimer;
+function toast(msg,ok){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.className='toast show'+(ok?' ok':'');
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>t.classList.remove('show'),2000);
+}
+
+// Hamburger
+const ham=document.getElementById('ham');
+const drop=document.getElementById('dropMenu');
+ham.addEventListener('click',e=>{
+  e.stopPropagation();
+  const open=drop.classList.toggle('open');
+  ham.classList.toggle('open',open);
+  ham.setAttribute('aria-expanded',open);
+});
+document.addEventListener('click',e=>{
+  if(!ham.contains(e.target)&&!drop.contains(e.target)){
+    drop.classList.remove('open');ham.classList.remove('open');ham.setAttribute('aria-expanded','false');
+  }
+});
+drop.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+  drop.classList.remove('open');ham.classList.remove('open');ham.setAttribute('aria-expanded','false');
+}));
+
+// Tab buttons
+document.querySelectorAll('.cat-btn').forEach(b=>b.addEventListener('click',()=>setTab(b.dataset.cat)));
+
+// Input
+document.getElementById('mainInput').addEventListener('input',updateCounters);
+document.getElementById('clearBtn').addEventListener('click',clearNick);
+document.getElementById('copyBtn').addEventListener('click',copyNick);
+document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key==='Enter'){e.preventDefault();copyNick()}});
+
+// FAQ
+document.querySelectorAll('.faq-item').forEach(item=>{
+  item.querySelector('.faq-question').addEventListener('click',()=>{
+    const was=item.classList.contains('active');
+    document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('active'));
+    if(!was)item.classList.add('active');
+  });
+});
+
+// Init
+renderGrid();
+
+// ── TYPING ANIMATION ──
+const BRAND_STR = 'MyNicknameStyler';
+const BRAND_HTML = 'My<span class="hi">Nickname</span>Styler';
+const brandEl = document.getElementById('navBrand');
+let typIdx = 0, typTimer = null;
+
+function startTyping() {
+  brandEl.innerHTML = '';
+  brandEl.classList.add('typing-mode');
+  const txt = document.createElement('span');
+  const cur = document.createElement('span');
+  cur.className = 'typing-cursor';
+  brandEl.appendChild(txt);
+  brandEl.appendChild(cur);
+  typIdx = 0;
+  function next() {
+    if (typIdx < BRAND_STR.length) {
+      txt.textContent += BRAND_STR[typIdx++];
+      typTimer = setTimeout(next, 85);
+    } else {
+      clearTimeout(typTimer);
+      brandEl.innerHTML = BRAND_HTML;
+    }
+  }
+  next();
+}
+startTyping();
+</script>
+</body>
+</html>
